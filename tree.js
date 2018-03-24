@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const tree = (root) => {
+const tree = (root = process.argv[2] || "node_modules") => {
     const result = {files: [], folders: []};
     const process = (dir, onComplete) => {
         fs.readdir(dir, (err, list) => {
@@ -33,4 +33,4 @@ const tree = (root) => {
     process(root, result => console.log(result));
 };
 
-tree('node_modules');
+tree();
